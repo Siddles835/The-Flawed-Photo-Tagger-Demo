@@ -1,1 +1,78 @@
+ Flawed Photo Tagger – A Vision AI Bias Explorer
 
+This project uses the **Google Cloud Vision API** to analyze uploaded images and explore potential **biases in AI image labeling**. It's a simple but powerful tool to reflect on how AI interprets diverse visual inputs.
+
+
+
+ Features
+
+- Upload any image (JPG or PNG)
+- Automatically retrieves and displays labels from Google Cloud Vision API
+- Displays confidence scores for each label
+- Built with Streamlit for a lightweight, interactive interface
+
+
+
+Project Purpose
+
+The goal is to help users critically explore **potential labeling bias** in commercial image recognition models — particularly across race, gender, or cultural contexts.
+
+
+
+Example Use Cases
+
+- Compare how similar images of people from different backgrounds are labeled.
+- Analyze differences in label confidence across contexts (e.g., formal vs. casual attire).
+- Detect unexpected or misleading labels that could reflect bias.
+
+
+
+ Setup Instructions
+
+1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/flawed-photo-tagger.git
+cd flawed-photo-tagger
+
+2. Install Dependencies
+
+pip install -r requirements.txt
+
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+3. Set Up Google Cloud Vision API
+
+Visit Google Cloud Console
+
+Click "Create Project", give it a name, and save it.
+
+Go to IAM & Admin > Service Accounts
+
+Click “+ CREATE SERVICE ACCOUNT”
+
+Grant role: “Project > Editor” (or Vision AI User)
+
+Create a JSON Key and download it (e.g., vision_key.json)
+
+Move it to your project folder
+
+4. Authenticate with your API Key:
+
+Set the environmental variable in your terminal like shown: 
+Mac/Linux: export GOOGLE_APPLICATION_CREDENTIALS="vision_key.json"
+Windows CMD: set GOOGLE_APPLICATION_CREDENTIALS=vision_key.json
+
+In app.py, add this to the top:
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "YOUR KEY.json"
+
+5. Run the App
+
+In your terminal, type: streamlit run app.py
+
+6. Take note of any bias that you find with each of the images that you add
+
+Created by: Sidhaanth Kapoor (Siddles835)
